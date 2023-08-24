@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+
+
+             
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>price</th>
+        <th>Trasaction Id</th>
+        <th>Date</th>
+        <th>buyer name</th>
+        <th>buyer email</th>
+        <th>buyer address</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+      <tr>
+        <td>{{myorder.id}}</td>
+        <td>{{myorder.totalprice}}</td>
+        <td>{{myorder.transactionid}}</td>
+        <td>{{myorder.datetime    }}</td>
+        <td>{{myorder.name}}</td>
+        <td>{{myorder.email}}</td>
+        <td>{{myorder.address}}</td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>name</th>
+        <th>Discription</th>
+        <th>Quantity</th>
+        <th>total price</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in prolist %}
+      <tr>
+        <td><img src="{{i.img.url}}"></td>
+        <td>{{i.name}}</td>
+        <td>{{i.dis}}</td>
+        <td>{{i.quantity}}</td>
+        <td>₹ {{i.totalprice}}</td>
+       
+      </tr>
+      {% endfor %}
+    
+    </tbody>
+  </table>
+
+  
+
+</div>
+
+
+
+
+  {% endblock  %}
+

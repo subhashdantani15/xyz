@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-4">
+    <div class="row">
+        <!-- <div class="col-5"> -->
+        <div class="col-5 ">
+            <img src="{{a.img.url}}" width="250">
+        </div>
+        <div class="col-5">
+            <span>{{a.Category}}</span>
+            <h5 class="mb-0">{{a.name}}</h5>
+            <p class="mb-0">{{a.description}}</p>
+            <div class="price">
+                <span>₹{{a.price}}</span>
+            </div>
+            {% if request.session.email %}
+            <form method="" action="" class="">
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+                    <button class="btn btn-success text-uppercase btn-sm details">Buy Now</button>
+                </div>
+            </form>
+            <br>
+            <form method="POST" action="{% url 'addcart123' %}" class="">
+                {% csrf_token %}
+                <input type="text" name="productid" value="{{a.id}}" hidden>
+
+                <input type="number" name="quantity">
+                <button class="btn btn-success text-uppercase btn-sm details">Add to Cart</button>
+
+            </form>
+            {% elif request.session.Vendoremail %}
+            <a href="/update-product/{{a.id}}/">Edit</a>
+            {% else %}
+            
+            {% endif %}
+        </div>
+        <!-- </div> -->
+    </div>
+    {% if m %}
+<script>alert("{{m}}")</script>
+{% endif %}
+</div>
+{% endblock %}
